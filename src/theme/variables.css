@@ -43,4 +43,16 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Inter', sans-serif;
+  height: 100%;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+ion-app {
+  height: 100%;
 }

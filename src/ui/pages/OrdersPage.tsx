@@ -140,7 +140,7 @@ const OrdersPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="orders-page">
+      <IonContent fullscreen scrollY className="orders-page">
         <IonRefresher slot="fixed" onIonRefresh={refresh}>
           <IonRefresherContent />
         </IonRefresher>
