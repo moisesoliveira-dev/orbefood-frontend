@@ -1,0 +1,152 @@
+.app-shell {
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+  min-height: 100%;
+  height: 100%;
+  background: var(--bg);
+}
+
+.app-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px 18px 20px;
+  border-right: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(99, 102, 241, 0.08), transparent 34%),
+    rgba(10, 10, 15, 0.96);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.app-sidebar__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 8px;
+}
+
+.app-sidebar__tag {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.app-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.app-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  color: var(--muted);
+  font-family: 'Sora', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.app-sidebar__link ion-icon {
+  font-size: 1.25rem;
+}
+
+.app-sidebar__link:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.app-sidebar__link.is-active {
+  color: var(--text);
+  background: rgba(99, 102, 241, 0.14);
+  border-color: rgba(99, 102, 241, 0.35);
+  box-shadow: 0 0 18px rgba(99, 102, 241, 0.12);
+}
+
+.app-sidebar__footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.app-sidebar__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orb-b);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.55);
+}
+
+.app-shell__main {
+  min-width: 0;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.app-shell__main ion-router-outlet {
+  position: relative;
+  contain: none;
+}
+
+/* Em viewports estreitas no browser, sidebar vira barra superior compacta */
+@media (max-width: 860px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .app-sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 14px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    overflow: visible;
+  }
+
+  .app-sidebar__brand {
+    flex: 0 0 auto;
+    padding: 0;
+  }
+
+  .app-sidebar__tag,
+  .app-sidebar__footer {
+    display: none;
+  }
+
+  .app-sidebar__nav {
+    flex-direction: row;
+    flex: 1;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .app-sidebar__link {
+    min-height: 42px;
+    padding: 0 12px;
+  }
+
+  .app-shell__main {
+    min-height: calc(100vh - 72px);
+  }
+}

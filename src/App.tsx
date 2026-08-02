@@ -1,17 +1,8 @@
 import { IonApp, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import {
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-} from '@ionic/react';
-import { Redirect, Route } from 'react-router-dom';
-import { homeOutline, receiptOutline } from 'ionicons/icons';
-import HomePage from './ui/pages/HomePage';
-import OrdersPage from './ui/pages/OrdersPage';
+import { prefersSidebarNavigation } from './adapters/platform/runtime';
+import { AppSidebarShell } from './ui/shell/AppSidebarShell';
+import { AppTabsShell } from './ui/shell/AppTabsShell';
 
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';
@@ -30,34 +21,13 @@ import './theme/landing.css';
 
 setupIonicReact();
 
+const useSidebar = prefersSidebarNavigation();
+
 const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            <Route exact path="/orders">
-              <OrdersPage />
-            </Route>
-            <Route exact path="/home">
-              <HomePage />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/orders" />
-            </Route>
-          </IonRouterOutlet>
-
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="orders" href="/orders">
-              <IonIcon aria-hidden="true" icon={receiptOutline} />
-              <IonLabel>Cozinha</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="home" href="/home">
-              <IonIcon aria-hidden="true" icon={homeOutline} />
-              <IonLabel>Início</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
+        {useSidebar ? <AppSidebarShell /> : <AppTabsShell />}
       </IonReactRouter>
     </IonApp>
   );
