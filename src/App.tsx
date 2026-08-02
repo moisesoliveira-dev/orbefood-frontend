@@ -50,7 +50,7 @@ const App: React.FC = () => {
           <IonTabBar slot="bottom">
             <IonTabButton tab="orders" href="/orders">
               <IonIcon aria-hidden="true" icon={receiptOutline} />
-              <IonLabel>Pedidos</IonLabel>
+              <IonLabel>Cozinha</IonLabel>
             </IonTabButton>
             <IonTabButton tab="home" href="/home">
               <IonIcon aria-hidden="true" icon={homeOutline} />

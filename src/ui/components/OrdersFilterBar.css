@@ -1,45 +1,81 @@
-.orders-filter {
+.kitchen-stations {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.kitchen-station {
+  position: relative;
   display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 4px 2px 12px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.orders-filter::-webkit-scrollbar {
-  display: none;
-}
-
-.orders-filter__tab {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  padding: 8px 14px;
-  border-radius: 999px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-height: 64px;
+  padding: 10px 10px 12px;
+  border-radius: 12px;
   border: 1px solid var(--border);
-  background: transparent;
+  background: rgba(19, 19, 26, 0.85);
   color: var(--muted);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 500;
   cursor: pointer;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
 }
 
-.orders-filter__tab.is-active {
+.kitchen-station:active {
+  transform: scale(0.98);
+}
+
+.kitchen-station.is-active {
+  border-color: rgba(99, 102, 241, 0.55);
+  background: linear-gradient(
+    160deg,
+    rgba(99, 102, 241, 0.2),
+    rgba(19, 19, 26, 0.95)
+  );
   color: var(--text);
-  border-color: rgba(99, 102, 241, 0.45);
-  background: rgba(99, 102, 241, 0.12);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.18);
 }
 
-.orders-filter__count {
+.kitchen-station.has-heat:not(.is-active) {
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.kitchen-station__label {
   font-family: 'Sora', sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
-  min-width: 1.4rem;
-  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.kitchen-station__hint {
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.kitchen-station.is-active .kitchen-station__hint {
   color: var(--accent-lt);
+}
+
+.kitchen-station__count {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--accent-lt);
+}
+
+@media (max-width: 560px) {
+  .kitchen-stations {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

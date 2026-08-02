@@ -115,15 +115,68 @@ export function canAdvanceOrder(status: OrderStatus): boolean {
 export function advanceLabel(status: OrderStatus): string {
   switch (status) {
     case 'accepted':
-      return 'Iniciar preparo';
+      return 'NO FOGO';
     case 'preparing':
-      return 'Marcar pronto';
+      return 'PRONTO!';
     case 'ready':
-      return 'Despachar';
+      return 'SAIU';
     case 'dispatched':
-      return 'Marcar entregue';
+      return 'FEITO!';
     default:
-      return 'Avançar';
+      return 'AVANÇAR';
+  }
+}
+
+export type TicketUrgency = 'calm' | 'warm' | 'hot' | 'critical';
+
+export function elapsedSeconds(placedAtIso: string, nowMs = Date.now()): number {
+  return Math.max(0, Math.floor((nowMs - new Date(placedAtIso).getTime()) / 1000));
+}
+
+export function formatTimer(totalSeconds: number): string {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+/** Urgência da comanda — quanto mais tempo no fogão, mais “quente”. */
+export function ticketUrgency(
+  status: OrderStatus,
+  placedAtIso: string,
+  nowMs = Date.now(),
+): TicketUrgency {
+  if (
+    status === 'delivered' ||
+    status === 'rejected' ||
+    status === 'cancelled'
+  ) {
+    return 'calm';
+  }
+  const minutes = elapsedSeconds(placedAtIso, nowMs) / 60;
+  if (status === 'pending') {
+    if (minutes >= 8) return 'critical';
+    if (minutes >= 4) return 'hot';
+    if (minutes >= 2) return 'warm';
+    return 'calm';
+  }
+  if (minutes >= 25) return 'critical';
+  if (minutes >= 15) return 'hot';
+  if (minutes >= 8) return 'warm';
+  return 'calm';
+}
+
+export function stationLabel(status: OrderStatus): string {
+  switch (status) {
+    case 'pending':
+      return 'ENTRADA';
+    case 'accepted':
+    case 'preparing':
+      return 'FOGÃO';
+    case 'ready':
+    case 'dispatched':
+      return 'PASS';
+    default:
+      return 'ARQUIVO';
   }
 }
 
