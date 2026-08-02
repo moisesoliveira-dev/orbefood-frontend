@@ -1,0 +1,7 @@
+services:
+  frontend:
+    build: .
+    container_name: orbefood-frontend
+    ports:
+      - "${FRONTEND_PORT:-8080}:80"
+    restart: unless-stopped
