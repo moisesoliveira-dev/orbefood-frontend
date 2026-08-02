@@ -148,35 +148,36 @@
 
 .kitchen-rail__bar {
   position: absolute;
-  top: 10px;
+  top: 12px;
   left: 0;
   right: 0;
-  height: 10px;
+  height: 14px;
   border-radius: 999px;
   background: linear-gradient(
     90deg,
     #1a1a24,
-    #2a2a3a 20%,
-    #3b3b55 50%,
-    #2a2a3a 80%,
+    #3f3f46 18%,
+    #52525b 50%,
+    #3f3f46 82%,
     #1a1a24
   );
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 8px 18px rgba(0, 0, 0, 0.35);
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 10px 22px rgba(0, 0, 0, 0.4);
 }
 
 .kitchen-rail__tickets {
   display: flex;
-  gap: 16px;
+  gap: 28px;
   overflow-x: auto;
-  padding: 8px 4px 20px;
+  padding: 12px 8px 36px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  align-items: flex-start;
 }
 
 .kitchen-rail__slot {
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 }
 
 .orders-page__empty,
