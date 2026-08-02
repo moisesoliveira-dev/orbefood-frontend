@@ -1,12 +1,12 @@
-import { IonIcon, IonRouterOutlet } from '@ionic/react';
-import { Link, Redirect, Route, useLocation } from 'react-router-dom';
+import { IonIcon } from '@ionic/react';
+import { Link, Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import { APP_NAV_ITEMS } from '../../domain/app-nav';
 import { BrandLogo } from '../components/BrandLogo';
 import HomePage from '../pages/HomePage';
 import OrdersPage from '../pages/OrdersPage';
 import './AppSidebarShell.css';
 
-/** Shell web — sidebar lateral fixa. */
+/** Shell web — sidebar lateral + rotas sem IonRouterOutlet (evita página “em branco”). */
 export function AppSidebarShell() {
   const location = useLocation();
 
@@ -42,17 +42,14 @@ export function AppSidebarShell() {
       </aside>
 
       <main className="app-shell__main">
-        <IonRouterOutlet>
-          <Route exact path="/orders">
-            <OrdersPage />
-          </Route>
-          <Route exact path="/home">
-            <HomePage />
-          </Route>
+        <Switch>
+          <Route exact path="/orders" component={OrdersPage} />
+          <Route exact path="/home" component={HomePage} />
           <Route exact path="/">
             <Redirect to="/orders" />
           </Route>
-        </IonRouterOutlet>
+          <Redirect to="/orders" />
+        </Switch>
       </main>
     </div>
   );

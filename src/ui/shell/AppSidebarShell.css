@@ -94,13 +94,56 @@
 
 .app-shell__main {
   min-width: 0;
-  min-height: 100vh;
+  height: 100vh;
   background: var(--bg);
+  position: relative;
+  overflow-y: auto;
 }
 
-.app-shell__main ion-router-outlet {
-  position: relative;
-  contain: none;
+/* Sem IonRouterOutlet: IonPage/IonContent não podem ficar absolute/escondidos */
+.app-shell__main ion-page {
+  position: static !important;
+  display: block !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100%;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  z-index: auto !important;
+}
+
+.app-shell__main .ion-page-hidden,
+.app-shell__main ion-page[aria-hidden='true'] {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.app-shell__main ion-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-shell__main ion-content {
+  position: static !important;
+  display: block !important;
+  height: auto !important;
+  contain: none !important;
+}
+
+.app-shell__main ion-content::part(scroll),
+.app-shell__main ion-content::part(background) {
+  position: static !important;
+  height: auto !important;
+  top: auto !important;
+  bottom: auto !important;
 }
 
 /* Em viewports estreitas no browser, sidebar vira barra superior compacta */
