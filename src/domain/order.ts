@@ -186,3 +186,81 @@ export function countByTab(
 ): number {
   return filterOrdersByTab(orders, tab).length;
 }
+
+export type ChannelFilter = 'all' | DeliveryChannel;
+
+export interface OrdersQuery {
+  tab: OrdersFilterTab;
+  channel: ChannelFilter;
+  search: string;
+}
+
+export function normalizeSearch(search: string): string {
+  return search.trim().toLowerCase();
+}
+
+export function matchesOrderSearch(order: OrderView, search: string): boolean {
+  const q = normalizeSearch(search);
+  if (!q) return true;
+
+  const haystack = [
+    order.externalCode,
+    order.customerName,
+    order.customerPhone ?? '',
+    order.notes ?? '',
+    CHANNEL_LABEL[order.channel],
+    ...order.items.map((item) => `${item.name} ${item.notes ?? ''}`),
+  ]
+    .join(' ')
+    .toLowerCase();
+
+  return haystack.includes(q);
+}
+
+export function filterOrdersByChannel(
+  orders: OrderView[],
+  channel: ChannelFilter,
+): OrderView[] {
+  if (channel === 'all') return orders;
+  return orders.filter((order) => order.channel === channel);
+}
+
+export function queryOrders(
+  orders: OrderView[],
+  query: OrdersQuery,
+): OrderView[] {
+  return filterOrdersByChannel(
+    filterOrdersByTab(orders, query.tab),
+    query.channel,
+  ).filter((order) => matchesOrderSearch(order, query.search));
+}
+
+export interface PageResult<T> {
+  items: T[];
+  page: number;
+  pageSize: number;
+  totalItems: number;
+  totalPages: number;
+}
+
+export function paginateItems<T>(
+  items: T[],
+  page: number,
+  pageSize: number,
+): PageResult<T> {
+  const size = Math.max(1, pageSize);
+  const totalItems = items.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / size));
+  const safePage = Math.min(Math.max(1, page), totalPages);
+  const start = (safePage - 1) * size;
+
+  return {
+    items: items.slice(start, start + size),
+    page: safePage,
+    pageSize: size,
+    totalItems,
+    totalPages,
+  };
+}
+
+export const ORDERS_PAGE_SIZE = 3;

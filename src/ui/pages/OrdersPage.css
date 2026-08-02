@@ -5,8 +5,9 @@
 .kitchen-board {
   position: relative;
   min-height: 100%;
+  max-width: 720px;
+  margin: 0 auto;
   padding: 12px 14px calc(28px + env(safe-area-inset-bottom, 0px));
-  overflow: hidden;
 }
 
 .kitchen-board::before {
@@ -21,9 +22,10 @@
 }
 
 .kitchen-hud,
-.kitchen-rail-label,
 .kitchen-stations,
-.kitchen-rail,
+.orders-toolbar,
+.orders-pagination,
+.comanda-stack,
 .orders-page__empty,
 .orders-page__error {
   position: relative;
@@ -113,71 +115,15 @@
   color: #fca5a5;
 }
 
-.kitchen-rail-label {
+.comanda-stack {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 6px 0 12px;
-  font-size: 0.78rem;
-  color: var(--muted);
+  flex-direction: column;
+  gap: 22px;
+  padding: 4px 0 12px;
 }
 
-.kitchen-rail-label__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.7);
-  animation: hud-dot 2s ease-in-out infinite;
-}
-
-@keyframes hud-dot {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.35;
-  }
-}
-
-.kitchen-rail {
-  position: relative;
-  margin-top: 8px;
-}
-
-.kitchen-rail__bar {
-  position: absolute;
-  top: 12px;
-  left: 0;
-  right: 0;
-  height: 14px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    #1a1a24,
-    #3f3f46 18%,
-    #52525b 50%,
-    #3f3f46 82%,
-    #1a1a24
-  );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    0 10px 22px rgba(0, 0, 0, 0.4);
-}
-
-.kitchen-rail__tickets {
-  display: flex;
-  gap: 28px;
-  overflow-x: auto;
-  padding: 12px 8px 36px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  align-items: flex-start;
-}
-
-.kitchen-rail__slot {
-  scroll-snap-align: center;
+.comanda-stack__item {
+  width: 100%;
 }
 
 .orders-page__empty,
@@ -220,12 +166,6 @@ ion-title {
   font-family: 'Sora', sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .kitchen-rail-label__dot {
-    animation: none;
-  }
 }
 
 @media (max-width: 560px) {

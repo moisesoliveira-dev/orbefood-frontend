@@ -8,20 +8,20 @@
   --rule: #d6d0c4;
 
   position: relative;
-  width: min(92vw, 360px);
-  flex: 0 0 auto;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
   padding-top: 22px;
   filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.35));
 }
 
-.kitchen-rail__slot:nth-child(odd) .comanda {
-  transform: rotate(-0.8deg);
+.comanda-stack__item:nth-child(odd) .comanda {
+  transform: rotate(-0.35deg);
 }
 
-.kitchen-rail__slot:nth-child(even) .comanda {
-  transform: rotate(0.7deg);
+.comanda-stack__item:nth-child(even) .comanda {
+  transform: rotate(0.35deg);
 }
-
 .comanda__clip {
   position: absolute;
   top: 0;
@@ -380,7 +380,7 @@
 
 @media (max-width: 420px) {
   .comanda {
-    width: min(94vw, 340px);
+    max-width: 100%;
   }
 
   .comanda__sheet {
