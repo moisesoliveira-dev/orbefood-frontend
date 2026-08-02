@@ -1,0 +1,86 @@
+.orders-page {
+  --background: var(--bg);
+}
+
+.orders-page__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 16px calc(24px + env(safe-area-inset-bottom, 0px));
+}
+
+.orders-page__hero {
+  margin-bottom: 8px;
+}
+
+.orders-page__eyebrow {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-lt);
+  margin: 8px 0 10px;
+}
+
+.orders-page__title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+
+.orders-page__sub {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.orders-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.orders-page__empty,
+.orders-page__error {
+  margin: 24px 0;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.orders-page__error {
+  color: #fca5a5;
+  border-color: rgba(248, 113, 113, 0.35);
+  background: rgba(248, 113, 113, 0.08);
+}
+
+ion-toolbar {
+  --background: rgba(10, 10, 15, 0.86);
+  --color: var(--text);
+  --border-width: 0 0 1px 0;
+  --border-color: rgba(255, 255, 255, 0.04);
+}
+
+ion-tab-bar {
+  --background: rgba(10, 10, 15, 0.92);
+  --border: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+ion-tab-button {
+  --color: var(--muted);
+  --color-selected: var(--accent-lt);
+}
+
+ion-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
