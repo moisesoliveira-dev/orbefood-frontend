@@ -9,10 +9,15 @@
 
   position: relative;
   width: 100%;
-  max-width: 340px;
+  max-width: 320px;
+  height: 100%;
+  max-height: 100%;
   margin: 0 auto;
-  padding-top: 22px;
-  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.35));
+  padding-top: 18px;
+  box-sizing: border-box;
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.32));
+  display: flex;
+  flex-direction: column;
 }
 
 .comanda-stack__item:nth-child(odd) .comanda {
@@ -69,6 +74,11 @@
 
 .comanda__sheet {
   position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
   background:
     repeating-linear-gradient(
       transparent,
@@ -80,11 +90,10 @@
   color: var(--ink);
   border: 1px solid var(--paper-edge);
   border-radius: 2px;
-  padding: 28px 22px 18px;
-  min-height: 420px;
+  padding: 18px 16px 14px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   clip-path: polygon(
     0 0,
     100% 0,
@@ -183,7 +192,7 @@
 
 .comanda__timer-value {
   font-family: 'Sora', sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--ink);
@@ -214,7 +223,7 @@
 .comanda__code {
   margin: 0;
   font-family: 'Sora', sans-serif;
-  font-size: 1.7rem;
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--ink);
@@ -255,12 +264,14 @@
 
 .comanda__items {
   list-style: none;
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .comanda__items li {
@@ -333,11 +344,11 @@
 
 .comanda-btn {
   flex: 1;
-  min-height: 52px;
+  min-height: 44px;
   border-radius: 8px;
   font-family: 'Sora', sans-serif;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   letter-spacing: 0.04em;
   cursor: pointer;
   transition: transform 0.15s, opacity 0.2s, box-shadow 0.2s;
@@ -384,7 +395,6 @@
   }
 
   .comanda__sheet {
-    min-height: 390px;
-    padding: 26px 18px 16px;
+    padding: 16px 14px 12px;
   }
 }

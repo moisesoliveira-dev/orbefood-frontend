@@ -146,80 +146,48 @@ const OrdersPage: React.FC = () => {
         </IonRefresher>
 
         <div className="kitchen-board">
-          <header className="kitchen-hud">
-            <div className="kitchen-hud__brand">
-              <p className="kitchen-hud__eyebrow">Service line</p>
-              <h1 className="kitchen-hud__title">
-                Quadro de <em>comandas</em>
-              </h1>
-            </div>
-
-            <div className="kitchen-hud__meters" aria-label="Indicadores da cozinha">
-              <div className="kitchen-meter">
-                <span className="kitchen-meter__label">FILA</span>
-                <strong>{entrada}</strong>
+          <div className="kitchen-board__top">
+            <header className="kitchen-hud">
+              <div className="kitchen-hud__brand">
+                <p className="kitchen-hud__eyebrow">Service line</p>
+                <h1 className="kitchen-hud__title">
+                  Quadro de <em>comandas</em>
+                </h1>
               </div>
-              <div className="kitchen-meter">
-                <span className="kitchen-meter__label">FOGO</span>
-                <strong>{fogao}</strong>
-              </div>
-              <div className={`kitchen-meter${critical ? ' is-critical' : ''}`}>
-                <span className="kitchen-meter__label">ALERTA</span>
-                <strong>{critical}</strong>
-              </div>
-              <div className="kitchen-meter kitchen-meter--timer">
-                <span className="kitchen-meter__label">MAX</span>
-                <strong>{hottestTimer(orders, now)}</strong>
-              </div>
-            </div>
-          </header>
 
-          <OrdersFilterBar
-            orders={orders}
-            active={tab}
-            onChange={(next) => setTab(next)}
-          />
-
-          <OrdersToolbar
-            search={search}
-            channel={channel}
-            onSearchChange={setSearch}
-            onChannelChange={setChannel}
-          />
-
-          <OrdersPagination
-            page={paged.page}
-            totalPages={paged.totalPages}
-            totalItems={paged.totalItems}
-            pageSize={paged.pageSize}
-            onPageChange={setPage}
-          />
-
-          {error ? <p className="orders-page__error">{error}</p> : null}
-
-          {loading ? (
-            <p className="orders-page__empty">Aquecendo a chapa…</p>
-          ) : paged.items.length === 0 ? (
-            <p className="orders-page__empty">
-              Nenhuma comanda com esses filtros.
-            </p>
-          ) : (
-            <div className="comanda-stack" role="list">
-              {paged.items.map((order) => (
-                <div key={order.id} role="listitem" className="comanda-stack__item">
-                  <OrderCard
-                    order={order}
-                    busy={busyId === order.id}
-                    onAccept={(id) => runAction(id, facade.acceptOrder)}
-                    onReject={(id) => runAction(id, facade.rejectOrder)}
-                    onAdvance={(id) => runAction(id, facade.advanceOrder)}
-                  />
+              <div className="kitchen-hud__meters" aria-label="Indicadores da cozinha">
+                <div className="kitchen-meter">
+                  <span className="kitchen-meter__label">FILA</span>
+                  <strong>{entrada}</strong>
                 </div>
-              ))}
-            </div>
-          )}
+                <div className="kitchen-meter">
+                  <span className="kitchen-meter__label">FOGO</span>
+                  <strong>{fogao}</strong>
+                </div>
+                <div className={`kitchen-meter${critical ? ' is-critical' : ''}`}>
+                  <span className="kitchen-meter__label">ALERTA</span>
+                  <strong>{critical}</strong>
+                </div>
+                <div className="kitchen-meter kitchen-meter--timer">
+                  <span className="kitchen-meter__label">MAX</span>
+                  <strong>{hottestTimer(orders, now)}</strong>
+                </div>
+              </div>
+            </header>
 
-          {!loading && paged.totalPages > 1 ? (
+            <OrdersFilterBar
+              orders={orders}
+              active={tab}
+              onChange={(next) => setTab(next)}
+            />
+
+            <OrdersToolbar
+              search={search}
+              channel={channel}
+              onSearchChange={setSearch}
+              onChannelChange={setChannel}
+            />
+
             <OrdersPagination
               page={paged.page}
               totalPages={paged.totalPages}
@@ -227,7 +195,37 @@ const OrdersPage: React.FC = () => {
               pageSize={paged.pageSize}
               onPageChange={setPage}
             />
-          ) : null}
+
+            {error ? <p className="orders-page__error">{error}</p> : null}
+          </div>
+
+          <div className="kitchen-board__stage">
+            {loading ? (
+              <p className="orders-page__empty">Aquecendo a chapa…</p>
+            ) : paged.items.length === 0 ? (
+              <p className="orders-page__empty">
+                Nenhuma comanda com esses filtros.
+              </p>
+            ) : (
+              <div className="comanda-stack" role="list">
+                {paged.items.map((order) => (
+                  <div
+                    key={order.id}
+                    role="listitem"
+                    className="comanda-stack__item"
+                  >
+                    <OrderCard
+                      order={order}
+                      busy={busyId === order.id}
+                      onAccept={(id) => runAction(id, facade.acceptOrder)}
+                      onReject={(id) => runAction(id, facade.rejectOrder)}
+                      onAdvance={(id) => runAction(id, facade.advanceOrder)}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </IonContent>
     </IonPage>

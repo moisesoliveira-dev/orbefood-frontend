@@ -1,13 +1,37 @@
 .orders-page {
   --background: var(--bg);
+  /* Altura reservada ao topo (hud + filtros + busca + paginação) */
+  --kitchen-chrome: 248px;
+  --comanda-row-h: calc(100dvh - var(--kitchen-chrome));
+}
+
+/* No shell web some o header Ionic duplicado — sobra mais espaço p/ 1 linha */
+.app-shell__main .orders-page {
+  --kitchen-chrome: 210px;
+}
+
+.app-shell__main ion-header {
+  display: none;
+}
+
+.orders-page::part(scroll) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .kitchen-board {
   position: relative;
-  min-height: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 12px 14px calc(28px + env(safe-area-inset-bottom, 0px));
+  padding: 10px 14px 14px;
+  box-sizing: border-box;
+  min-height: 100%;
 }
 
 .kitchen-board::before {
@@ -21,6 +45,8 @@
   pointer-events: none;
 }
 
+.kitchen-board__top,
+.kitchen-board__stage,
 .kitchen-hud,
 .kitchen-stations,
 .orders-toolbar,
@@ -31,27 +57,36 @@
   position: relative;
 }
 
+.kitchen-board__top {
+  flex: 0 0 auto;
+}
+
+.kitchen-board__stage {
+  flex: 1 1 auto;
+  min-height: var(--comanda-row-h);
+}
+
 .kitchen-hud {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 14px;
+  gap: 10px;
+  margin-bottom: 6px;
 }
 
 .kitchen-hud__eyebrow {
   font-family: 'Sora', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent-lt);
-  margin: 4px 0 8px;
+  margin: 0 0 4px;
 }
 
 .kitchen-hud__title {
   font-family: 'Sora', sans-serif;
-  font-size: clamp(1.55rem, 4vw, 2.1rem);
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   margin: 0;
@@ -69,32 +104,32 @@
 
 .kitchen-hud__meters {
   display: grid;
-  grid-template-columns: repeat(4, minmax(64px, 1fr));
-  gap: 8px;
-  min-width: min(100%, 320px);
+  grid-template-columns: repeat(4, minmax(56px, 1fr));
+  gap: 6px;
+  min-width: min(100%, 280px);
 }
 
 .kitchen-meter {
   background: rgba(19, 19, 26, 0.9);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 10px 12px;
+  border-radius: 10px;
+  padding: 6px 8px 8px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 2px;
 }
 
 .kitchen-meter__label {
   font-family: 'Sora', sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.54rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: var(--muted);
 }
 
 .kitchen-meter strong {
   font-family: 'Sora', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text);
@@ -102,7 +137,7 @@
 }
 
 .kitchen-meter--timer strong {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--orb-b);
 }
 
@@ -117,22 +152,24 @@
 
 .comanda-stack {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 28px 18px;
-  padding: 8px 0 16px;
-  align-items: start;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px 14px;
+  padding: 4px 0 8px;
+  align-items: stretch;
   justify-items: center;
 }
 
 .comanda-stack__item {
   width: 100%;
-  max-width: 340px;
+  max-width: 320px;
+  height: var(--comanda-row-h);
+  max-height: var(--comanda-row-h);
 }
 
 .orders-page__empty,
 .orders-page__error {
-  margin: 28px 0;
-  padding: 28px 20px;
+  margin: 12px 0;
+  padding: 20px;
   border-radius: 14px;
   border: 1px dashed var(--border);
   color: var(--muted);
@@ -152,6 +189,7 @@ ion-toolbar {
   --color: var(--text);
   --border-width: 0 0 1px 0;
   --border-color: rgba(255, 255, 255, 0.04);
+  --min-height: 48px;
 }
 
 ion-tab-bar {
@@ -171,7 +209,16 @@ ion-title {
   letter-spacing: -0.02em;
 }
 
+/* Tabs nativas: header Ionic existe → chrome um pouco maior */
+ion-tabs .orders-page {
+  --kitchen-chrome: calc(248px + 48px + env(safe-area-inset-bottom, 0px));
+}
+
 @media (max-width: 560px) {
+  .orders-page {
+    --kitchen-chrome: 320px;
+  }
+
   .kitchen-hud__meters {
     width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
