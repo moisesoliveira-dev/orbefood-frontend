@@ -23,12 +23,12 @@ const HomePage: React.FC = () => {
         <div className="landing">
           <LandingNav onCta={facade.startSignup} />
           <Hero onPrimary={facade.startSignup} onSecondary={facade.openDemo} />
-          <div className="section-divider" />
+          <hr className="full-sep" />
           <AgentsSection />
-          <div className="section-divider" />
+          <hr className="full-sep" />
           <FlowSection />
           <FeaturesSection />
-          <div className="section-divider" />
+          <hr className="full-sep" />
           <CtaSection
             onPrimary={facade.startSignup}
             onSecondary={facade.contactSpecialist}

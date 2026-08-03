@@ -160,7 +160,7 @@
 }
 
 .comanda__station {
-  font-family: 'Sora', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -178,7 +178,7 @@
 
 .comanda__timer-label {
   display: block;
-  font-family: 'Sora', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   color: var(--ink-faint);
@@ -186,7 +186,7 @@
 }
 
 .comanda__timer-value {
-  font-family: 'Sora', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -195,11 +195,11 @@
 }
 
 .comanda__timer.urgency-warm .comanda__timer-value {
-  color: #4338ca;
+  color: #9a6b2f;
 }
 
 .comanda__timer.urgency-hot .comanda__timer-value {
-  color: #0369a1;
+  color: #b45309;
 }
 
 .comanda__timer.urgency-critical .comanda__timer-value {
@@ -217,7 +217,7 @@
 
 .comanda__code {
   margin: 0;
-  font-family: 'Sora', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -245,7 +245,7 @@
 
 .comanda__customer {
   margin: 0;
-  font-family: 'Sora', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--ink);
@@ -283,7 +283,7 @@
   height: 34px;
   display: grid;
   place-items: center;
-  font-family: 'Sora', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 1rem;
   border-radius: 4px;
@@ -338,7 +338,7 @@
   flex: 1;
   min-height: 44px;
   border-radius: 8px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 700;
   font-size: 0.82rem;
   letter-spacing: 0.04em;
@@ -365,20 +365,21 @@
 }
 
 .comanda-btn--fire {
-  background: var(--accent);
+  background: var(--gold);
   border: none;
-  color: #fff;
-  box-shadow: 0 6px 0 #3730a3;
+  color: var(--bg);
+  box-shadow: 0 6px 0 var(--gold-dim);
 }
 
 .comanda-btn--fire:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 7px 0 #3730a3;
+  box-shadow: 0 7px 0 var(--gold-dim);
+  background: var(--gold-lt);
 }
 
 .comanda-btn--fire:active:not(:disabled) {
   transform: translateY(3px);
-  box-shadow: 0 3px 0 #3730a3;
+  box-shadow: 0 3px 0 var(--gold-dim);
 }
 
 @media (max-width: 420px) {

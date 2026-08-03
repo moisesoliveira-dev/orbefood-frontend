@@ -7,7 +7,7 @@
 
 .orders-toolbar__label {
   display: block;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Playfair Display', serif;
   font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -24,7 +24,7 @@
   border: 1px solid var(--border);
   background: rgba(19, 19, 26, 0.92);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
   padding: 0 12px;
   outline: none;
@@ -37,8 +37,8 @@
 
 .orders-toolbar__search input:focus,
 .orders-toolbar__channel select:focus {
-  border-color: rgba(99, 102, 241, 0.55);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  border-color: rgba(201, 169, 110, 0.55);
+  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.15);
 }
 
 .orders-toolbar__channel select {

@@ -16,7 +16,7 @@ export function LandingNav({ onCta }: LandingNavProps) {
           </li>
         ))}
       </ul>
-      <button type="button" className="btn-nav" onClick={onCta}>
+      <button type="button" className="btn-reserva" onClick={onCta}>
         Começar agora
       </button>
     </nav>

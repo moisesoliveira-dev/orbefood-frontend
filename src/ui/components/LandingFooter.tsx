@@ -6,7 +6,7 @@ export function LandingFooter() {
 
   return (
     <footer className="landing-footer">
-      <BrandLogo />
+      <BrandLogo className="footer-logo" />
       <p className="footer-copy">
         © {year} {brandName}. Todos os direitos reservados.
       </p>

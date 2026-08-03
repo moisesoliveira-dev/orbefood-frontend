@@ -1,0 +1,257 @@
+.cadastro-page {
+  --background: var(--bg);
+}
+
+.cadastro-board {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 14px 16px 28px;
+  box-sizing: border-box;
+}
+
+.cadastro-board::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 15% 0%, rgba(139, 105, 20, 0.12), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 95% 8%, rgba(201, 169, 110, 0.08), transparent 50%);
+  pointer-events: none;
+}
+
+.cadastro-board > * {
+  position: relative;
+}
+
+.cadastro-hud {
+  margin-bottom: 14px;
+}
+
+.cadastro-hud__eyebrow {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-lt);
+  margin: 0 0 4px;
+}
+
+.cadastro-hud__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+
+.cadastro-hud__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+}
+
+.cadastro-hud__lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  max-width: 42ch;
+}
+
+.cadastro-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.cadastro-tab {
+  flex: 1 1 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(19, 19, 26, 0.85);
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.cadastro-tab:hover {
+  border-color: rgba(201, 169, 110, 0.35);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.cadastro-tab.is-active {
+  border-color: rgba(201, 169, 110, 0.55);
+  color: var(--text);
+  box-shadow: 0 0 0 1px rgba(201, 169, 110, 0.2);
+}
+
+.cadastro-tab__label {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.cadastro-tab__hint {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.cadastro-panel {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 16px;
+}
+
+.cadastro-form {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.cadastro-form__row {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .cadastro-form__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cadastro-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cadastro-field label {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cadastro-field input,
+.cadastro-field select {
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0c0c12;
+  color: var(--text);
+  padding: 0 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+}
+
+.cadastro-field input:focus,
+.cadastro-field select:focus {
+  outline: none;
+  border-color: rgba(201, 169, 110, 0.6);
+}
+
+.cadastro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.cadastro-btn {
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cadastro-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.cadastro-btn--primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(201, 169, 110, 0.22);
+}
+
+.cadastro-btn--primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.cadastro-btn--ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.cadastro-msg {
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.cadastro-msg--error {
+  color: #f87171;
+}
+
+.cadastro-msg--ok {
+  color: #7dd3fc;
+}
+
+.cadastro-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.cadastro-list__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(10, 10, 15, 0.55);
+}
+
+.cadastro-list__title {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.cadastro-list__meta {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.cadastro-empty {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}

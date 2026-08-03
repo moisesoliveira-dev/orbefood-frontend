@@ -1,4 +1,4 @@
-import { DualOrbs } from './DualOrbs';
+import { Ornament } from './Ornament';
 
 interface HeroProps {
   onPrimary: () => void;
@@ -8,37 +8,31 @@ interface HeroProps {
 export function Hero({ onPrimary, onSecondary }: HeroProps) {
   return (
     <section className="hero">
-      <div className="hero-badge">
-        <span className="badge-dot" />
-        Pedidos unificados em todos os canais
-      </div>
+      <p className="hero-season">Operação multiplataforma · Delivery</p>
 
-      <DualOrbs />
+      <h1 className="hero-title">Do pedido ao</h1>
+      <span className="hero-title-italic">entregador unificado</span>
 
-      <p className="hero-eyebrow">Operação multiplataforma de delivery</p>
+      <Ornament className="hero-ornament" />
 
-      <h1 className="hero-title">
-        Do pedido ao entregador
-        <br />
-        em <em>todas as plataformas</em>
-      </h1>
-
-      <p className="hero-sub">
+      <p className="hero-desc">
         OrbeFood conecta iFood, 99Food e a sua cozinha em um fluxo só — sem painéis
         paralelos, sem perder SLA.
       </p>
 
       <div className="hero-actions">
-        <button type="button" className="btn-primary" onClick={onPrimary}>
-          <span>Criar conta grátis</span>
-          <span aria-hidden="true">→</span>
+        <button type="button" className="btn-primary-gold" onClick={onPrimary}>
+          Criar conta grátis
         </button>
-        <button type="button" className="btn-ghost" onClick={onSecondary}>
+        <button type="button" className="btn-outline-gold" onClick={onSecondary}>
           Ver demonstração
         </button>
       </div>
 
-      <p className="hero-footnote">Sem cartão de crédito · Configuração em minutos</p>
+      <div className="hero-scroll">
+        <div className="scroll-line" />
+        <span>Descer</span>
+      </div>
     </section>
   );
 }

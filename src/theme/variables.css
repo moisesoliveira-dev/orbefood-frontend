@@ -1,48 +1,56 @@
-/* OrbeFood design tokens — fonte: landing-two-ai.html */
+/* OrbeFood design tokens — fonte: landing-gastro.html */
 :root {
-  --bg: #0a0a0f;
-  --surface: #13131a;
-  --border: #1e1e2e;
-  --accent: #6366f1;
-  --accent-lt: #a5b4fc;
-  --accent-2: #818cf8;
-  --text: #e2e8f0;
-  --muted: #64748b;
-  --orb-a: #6366f1;
-  --orb-b: #38bdf8;
+  --bg: #0c0a07;
+  --bg-warm: #100e0b;
+  --surface: #161310;
+  --surface-2: #1c1916;
+  --border: #2a2218;
+  --gold: #c9a96e;
+  --gold-dim: #8b6914;
+  --gold-lt: #e8d5a8;
+  --cream: #f5edd8;
+  --text: #ddd0b8;
+  --muted: #6b6059;
+  --muted-lt: #8c7d72;
 
-  --ion-color-primary: #6366f1;
-  --ion-color-primary-rgb: 99, 102, 241;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #5759d4;
-  --ion-color-primary-tint: #7375f2;
+  --accent: var(--gold);
+  --accent-lt: var(--gold-lt);
+  --accent-2: var(--gold-dim);
+  --orb-a: var(--gold);
+  --orb-b: var(--gold-lt);
 
-  --ion-color-secondary: #38bdf8;
-  --ion-color-secondary-rgb: 56, 189, 248;
-  --ion-color-secondary-contrast: #0a0a0f;
-  --ion-color-secondary-contrast-rgb: 10, 10, 15;
-  --ion-color-secondary-shade: #31a6da;
-  --ion-color-secondary-tint: #4cc4f9;
+  --ion-color-primary: #c9a96e;
+  --ion-color-primary-rgb: 201, 169, 110;
+  --ion-color-primary-contrast: #0c0a07;
+  --ion-color-primary-contrast-rgb: 12, 10, 7;
+  --ion-color-primary-shade: #b19561;
+  --ion-color-primary-tint: #ceb27d;
 
-  --ion-color-medium: #64748b;
-  --ion-color-medium-rgb: 100, 116, 139;
+  --ion-color-secondary: #e8d5a8;
+  --ion-color-secondary-rgb: 232, 213, 168;
+  --ion-color-secondary-contrast: #0c0a07;
+  --ion-color-secondary-contrast-rgb: 12, 10, 7;
+  --ion-color-secondary-shade: #ccbb94;
+  --ion-color-secondary-tint: #ead9b1;
+
+  --ion-color-medium: #6b6059;
+  --ion-color-medium-rgb: 107, 96, 89;
 
   --ion-background-color: var(--bg);
-  --ion-background-color-rgb: 10, 10, 15;
+  --ion-background-color-rgb: 12, 10, 7;
   --ion-text-color: var(--text);
-  --ion-text-color-rgb: 226, 232, 240;
-  --ion-toolbar-background: rgba(10, 10, 15, 0.72);
+  --ion-text-color-rgb: 221, 208, 184;
+  --ion-toolbar-background: rgba(12, 10, 7, 0.85);
   --ion-item-background: var(--surface);
   --ion-card-background: var(--surface);
   --ion-border-color: var(--border);
-  --ion-font-family: 'Inter', sans-serif;
+  --ion-font-family: 'DM Sans', sans-serif;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   height: 100%;
 }
 

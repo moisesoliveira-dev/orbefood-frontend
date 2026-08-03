@@ -7,7 +7,11 @@ import {
   IonTabs,
 } from '@ionic/react';
 import { Redirect, Route } from 'react-router-dom';
-import { APP_NAV_ITEMS } from '../../domain/app-nav';
+import {
+  APP_NAV_ITEMS,
+  DEFAULT_CADASTRO_PATH,
+} from '../../domain/app-nav';
+import CadastroPage from '../pages/CadastroPage';
 import HomePage from '../pages/HomePage';
 import OrdersPage from '../pages/OrdersPage';
 
@@ -19,6 +23,18 @@ export function AppTabsShell() {
         <Route exact path="/orders">
           <OrdersPage />
         </Route>
+        <Route exact path="/cadastro/restaurantes">
+          <CadastroPage />
+        </Route>
+        <Route exact path="/cadastro/clientes">
+          <CadastroPage />
+        </Route>
+        <Route exact path="/cadastro/produtos">
+          <CadastroPage />
+        </Route>
+        <Route exact path="/cadastro">
+          <Redirect to={DEFAULT_CADASTRO_PATH} />
+        </Route>
         <Route exact path="/home">
           <HomePage />
         </Route>
@@ -29,7 +45,11 @@ export function AppTabsShell() {
 
       <IonTabBar slot="bottom">
         {APP_NAV_ITEMS.map((item) => (
-          <IonTabButton key={item.tab} tab={item.tab} href={item.path}>
+          <IonTabButton
+            key={item.tab}
+            tab={item.tab}
+            href={item.children?.length ? DEFAULT_CADASTRO_PATH : item.path}
+          >
             <IonIcon aria-hidden="true" icon={item.icon} />
             <IonLabel>{item.label}</IonLabel>
           </IonTabButton>

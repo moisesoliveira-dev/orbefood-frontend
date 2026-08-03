@@ -26,6 +26,7 @@ import {
   ticketUrgency,
 } from '../../domain/order';
 import { OrderCard } from '../components/OrderCard';
+import { CreateManualOrderModal } from '../components/CreateManualOrderModal';
 import { OrdersFilterBar } from '../components/OrdersFilterBar';
 import { OrdersPagination } from '../components/OrdersPagination';
 import { OrdersToolbar } from '../components/OrdersToolbar';
@@ -63,6 +64,7 @@ const OrdersPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [busyId, setBusyId] = useState<string | null>(null);
   const [now, setNow] = useState(() => Date.now());
+  const [createOpen, setCreateOpen] = useState(false);
 
   const load = async () => {
     const result = await facade.listOrders();
@@ -153,6 +155,13 @@ const OrdersPage: React.FC = () => {
                 <h1 className="kitchen-hud__title">
                   Quadro de <em>comandas</em>
                 </h1>
+                <button
+                  type="button"
+                  className="kitchen-hud__create"
+                  onClick={() => setCreateOpen(true)}
+                >
+                  Cadastrar pedido
+                </button>
               </div>
 
               <div className="kitchen-hud__meters" aria-label="Indicadores da cozinha">
@@ -227,6 +236,16 @@ const OrdersPage: React.FC = () => {
             )}
           </div>
         </div>
+
+        <CreateManualOrderModal
+          open={createOpen}
+          onClose={() => setCreateOpen(false)}
+          onCreated={(order) => {
+            setOrders((current) => [order, ...current]);
+            setTab('pending');
+            setError(null);
+          }}
+        />
       </IonContent>
     </IonPage>
   );

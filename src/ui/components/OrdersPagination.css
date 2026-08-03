@@ -24,7 +24,7 @@
 }
 
 .orders-pagination__page {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Playfair Display', serif;
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--text);
@@ -39,7 +39,7 @@
   border: 1px solid var(--border);
   background: transparent;
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
@@ -47,8 +47,8 @@
 }
 
 .orders-pagination__btn:hover:not(:disabled) {
-  border-color: rgba(99, 102, 241, 0.45);
-  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(201, 169, 110, 0.45);
+  background: rgba(201, 169, 110, 0.12);
 }
 
 .orders-pagination__btn:disabled {
