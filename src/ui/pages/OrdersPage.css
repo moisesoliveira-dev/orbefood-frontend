@@ -1,37 +1,17 @@
 .orders-page {
   --background: var(--bg);
-  /* Altura reservada ao topo (hud + filtros + busca + paginação) */
-  --kitchen-chrome: 248px;
-  --comanda-row-h: calc(100dvh - var(--kitchen-chrome));
-}
-
-/* No shell web some o header Ionic duplicado — sobra mais espaço p/ 1 linha */
-.app-shell__main .orders-page {
-  --kitchen-chrome: 210px;
 }
 
 .app-shell__main ion-header {
   display: none;
 }
 
-.orders-page::part(scroll) {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-
 .kitchen-board {
   position: relative;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 14px 14px;
+  padding: 10px 14px 20px;
   box-sizing: border-box;
-  min-height: 100%;
 }
 
 .kitchen-board::before {
@@ -55,15 +35,6 @@
 .orders-page__empty,
 .orders-page__error {
   position: relative;
-}
-
-.kitchen-board__top {
-  flex: 0 0 auto;
-}
-
-.kitchen-board__stage {
-  flex: 1 1 auto;
-  min-height: var(--comanda-row-h);
 }
 
 .kitchen-hud {
@@ -152,18 +123,16 @@
 
 .comanda-stack {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px 14px;
-  padding: 4px 0 8px;
-  align-items: stretch;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px 16px;
+  padding: 8px 0 12px;
+  align-items: start;
   justify-items: center;
 }
 
 .comanda-stack__item {
   width: 100%;
-  max-width: 320px;
-  height: var(--comanda-row-h);
-  max-height: var(--comanda-row-h);
+  max-width: 300px;
 }
 
 .orders-page__empty,
@@ -209,16 +178,7 @@ ion-title {
   letter-spacing: -0.02em;
 }
 
-/* Tabs nativas: header Ionic existe → chrome um pouco maior */
-ion-tabs .orders-page {
-  --kitchen-chrome: calc(248px + 48px + env(safe-area-inset-bottom, 0px));
-}
-
 @media (max-width: 560px) {
-  .orders-page {
-    --kitchen-chrome: 320px;
-  }
-
   .kitchen-hud__meters {
     width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));

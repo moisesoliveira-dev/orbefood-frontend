@@ -9,15 +9,11 @@
 
   position: relative;
   width: 100%;
-  max-width: 320px;
-  height: 100%;
-  max-height: 100%;
+  max-width: 300px;
   margin: 0 auto;
   padding-top: 18px;
   box-sizing: border-box;
   filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.32));
-  display: flex;
-  flex-direction: column;
 }
 
 .comanda-stack__item:nth-child(odd) .comanda {
@@ -74,11 +70,6 @@
 
 .comanda__sheet {
   position: relative;
-  flex: 1 1 auto;
-  min-height: 0;
-  height: 100%;
-  max-height: 100%;
-  overflow: hidden;
   background:
     repeating-linear-gradient(
       transparent,
@@ -94,6 +85,10 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  /* tamanho natural de papel — sem esticar a tela */
+  min-height: 0;
+  height: auto;
+  max-height: none;
   clip-path: polygon(
     0 0,
     100% 0,
@@ -269,9 +264,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
 }
 
 .comanda__items li {
